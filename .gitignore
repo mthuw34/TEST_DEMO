@@ -1,0 +1,7 @@
+node_modules/
+database/hospital.db
+database/hospital.db-wal
+database/hospital.db-shm
+Bệnh án/*.md
+Bệnh án/*.json
+.env

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quản lý bác sĩ</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>QUẢN LÝ BÁC SĨ</h1>
+    <p>Thông tin bác sĩ · lịch trực · trạng thái bận · số bệnh nhân hiện tại</p>
+  </header>
+  <nav class="nav">
+    <a href="/queue.html">1. Hàng đợi & Check-in</a>
+    <a class="active" href="/doctors.html">2. Quản lý bác sĩ</a>
+    <a href="/examining.html">3. Bệnh nhân đang khám</a>
+    <a href="/records.html">4. Hồ sơ đã khám</a>
+  </nav>
+
+  <main class="container">
+    <section class="metrics" id="metrics"></section>
+    <section class="card">
+      <h2>Lọc bác sĩ</h2>
+      <div class="row">
+        <select id="doctorDepartment" style="min-width:260px"></select>
+        <select id="doctorSpecialty" style="min-width:330px"></select>
+        <button id="loadDoctorsBtn" class="primary">Xem bác sĩ</button>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Danh sách bác sĩ</h2>
+      <div id="doctorGrid" class="doctor-grid"></div>
+    </section>
+  </main>
+
+  <dialog id="doctorDialog" class="dialog">
+    <div class="dialog-body">
+      <div class="dialog-head">
+        <h2 id="dialogDoctorName">Chi tiết bác sĩ</h2>
+        <button id="closeDoctorDialog">Đóng</button>
+      </div>
+      <input id="editDoctorId" type="hidden" />
+      <div class="grid two">
+        <div><label>Họ tên</label><input id="editFullName" /></div>
+        <div><label>Năm sinh</label><input id="editBirthYear" type="number" /></div>
+        <div><label>Giới tính</label><select id="editGender"><option value="Nam">Nam</option><option value="Nữ">Nữ</option><option value="Khác">Khác</option></select></div>
+        <div><label>Số điện thoại</label><input id="editPhone" /></div>
+        <div><label>Email</label><input id="editEmail" /></div>
+        <div>
+          <label>Trình độ chuyên môn / học vị</label>
+          <select id="editQualification"></select>
+          <div id="qualificationHint" class="muted small" style="margin-top:6px"></div>
+        </div>
+        <div>
+          <label>Số năm kinh nghiệm</label>
+          <input id="editExperience" type="number" min="0" />
+          <div id="experienceHint" class="muted small" style="margin-top:6px"></div>
+        </div>
+      </div>
+      <button id="saveProfileBtn" class="primary full">Lưu thông tin bác sĩ</button>
+
+      <h3>Lịch trực</h3>
+      <div id="shiftList"></div>
+      <div class="shift-row">
+        <div><label>Thứ</label><select id="newShiftDay"><option value="1">Thứ 2</option><option value="2">Thứ 3</option><option value="3">Thứ 4</option><option value="4">Thứ 5</option><option value="5">Thứ 6</option><option value="6">Thứ 7</option><option value="0">Chủ nhật</option></select></div>
+        <div><label>Bắt đầu</label><input id="newShiftStart" type="time" value="07:30" /></div>
+        <div><label>Kết thúc</label><input id="newShiftEnd" type="time" value="11:30" /></div>
+        <button id="addShiftBtn" class="success">+ Thêm ca</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="/js/common.js?v=3.6.0"></script>
+  <script src="/js/doctors.js?v=3.6.0"></script>
+</body>
+</html>

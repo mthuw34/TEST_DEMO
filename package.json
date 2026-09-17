@@ -1,0 +1,15 @@
+{
+  "name": "hospital-queue-dsa-v3",
+  "version": "3.9.0",
+  "description": "Hospital queue DSA - doctor data logic audit, auto routing, detailed medical records, no file export",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "dev": "node --no-warnings server.js",
+    "test": "node tests/dsa.test.js && node tests/schedule.test.js && node tests/doctor-logic.test.js",
+    "reset-db": "node scripts/reset-db.js",
+    "fix-doctor-experience": "node scripts/fix-doctor-experience.js",
+    "fix-doctor-logic": "node scripts/fix-doctor-logic.js"
+  },
+  "dependencies": {}
+}

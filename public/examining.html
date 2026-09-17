@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bệnh nhân đang khám</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>BỆNH NHÂN ĐANG KHÁM</h1>
+    <p>Trang 3 · Theo dõi quá trình khám · chỉ số đo trước được khóa để bác sĩ không phải nhập lại</p>
+  </header>
+  <nav class="nav">
+    <a href="/queue.html">1. Hàng đợi & Check-in</a>
+    <a href="/doctors.html">2. Quản lý bác sĩ</a>
+    <a class="active" href="/examining.html">3. Bệnh nhân đang khám</a>
+    <a href="/records.html">4. Hồ sơ đã khám</a>
+  </nav>
+
+  <main class="container">
+    <section class="metrics" id="metrics"></section>
+    <section class="card">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Các ca đang khám</h2>
+        <button id="refreshExaminingBtn">Làm mới</button>
+      </div>
+      <div id="examiningGrid" class="doctor-grid" style="margin-top:14px"></div>
+    </section>
+
+    <section id="examFormCard" class="card hidden">
+      <h2 id="examTitle">Lập bệnh án</h2>
+      <div id="examRouting" class="notice"></div>
+      <h3>Chỉ số đã đo trước khi vào phòng</h3>
+      <div id="vitalGrid" class="vital-grid"></div>
+      <p class="muted small">Các chỉ số trên lấy từ bước check-in/đo ban đầu. Bác sĩ không cần nhập lại.</p>
+
+      <h3>Nội dung bác sĩ nhập</h3>
+      <input id="examVisitId" type="hidden" />
+      <div class="grid two">
+        <div><label>Lý do khám</label><textarea id="chiefComplaint"></textarea></div>
+        <div><label>Bệnh sử / tiền sử</label><textarea id="history"></textarea></div>
+        <div><label>Dị ứng</label><textarea id="allergies"></textarea></div>
+        <div><label>Khám lâm sàng</label><textarea id="clinicalExam"></textarea></div>
+        <div><label>Chẩn đoán</label><textarea id="diagnosis"></textarea></div>
+        <div><label>Mã ICD</label><input id="icdCode" /></div>
+        <div><label>Tóm tắt xét nghiệm</label><textarea id="labSummary"></textarea></div>
+        <div><label>Chẩn đoán hình ảnh</label><textarea id="imagingSummary"></textarea></div>
+        <div><label>Điều trị / xử trí</label><textarea id="treatment"></textarea></div>
+        <div><label>Đơn thuốc</label><textarea id="prescription"></textarea></div>
+        <div><label>Dặn dò</label><textarea id="advice"></textarea></div>
+        <div><label>Hẹn tái khám</label><textarea id="followUp"></textarea></div>
+      </div>
+      <button id="completeExamBtn" class="primary full">Hoàn thành khám · xuất bệnh án · tự gọi người tiếp theo</button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/js/common.js?v=3.2.0"></script>
+  <script src="/js/examining.js?v=3.2.0"></script>
+</body>
+</html>

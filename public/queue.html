@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hàng đợi & Check-in</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>HỆ THỐNG QUẢN LÝ KHÁM BỆNH</h1>
+    <p>Trang 1 · Hàng đợi & Check-in · Bệnh nhân chỉ chọn Khoa + Chuyên ngành</p>
+  </header>
+  <nav class="nav">
+    <a class="active" href="/queue.html">1. Hàng đợi & Check-in</a>
+    <a href="/doctors.html">2. Quản lý bác sĩ</a>
+    <a href="/examining.html">3. Bệnh nhân đang khám</a>
+    <a href="/records.html">4. Hồ sơ đã khám</a>
+  </nav>
+
+  <main class="container">
+    <section class="metrics" id="metrics"></section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Tra cứu bệnh nhân trước khi check-in</h2>
+        <div class="row">
+          <input id="lookupCode" style="flex:1" value="BN000001" placeholder="VD: BN000001" />
+          <button id="lookupBtn" class="primary">Tra cứu</button>
+        </div>
+        <div id="patientInfo" class="notice">Chưa tra cứu bệnh nhân.</div>
+      </div>
+
+      <div class="card">
+        <h2>Nguyên tắc tự động điều phối</h2>
+        <p class="muted">Bệnh nhân <strong>không chọn phòng</strong> và <strong>không chọn bác sĩ</strong>. Hệ thống tự tìm bác sĩ đúng chuyên ngành, đang trong ca trực, không bận và có tải phù hợp; phòng khám được lấy theo phòng của bác sĩ đó.</p>
+        <p class="muted">Khoa 24/7 bỏ qua quy tắc nghỉ trưa / gần hết giờ. Khoa thường sẽ chặn check-in trong giờ nghỉ trưa hoặc khi sắp kết thúc ngày làm việc.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Check-in bệnh nhân</h2>
+      <div class="grid three">
+        <div>
+          <label>Mã bệnh nhân</label>
+          <input id="patientCode" value="BN000001" />
+        </div>
+        <div>
+          <label>Khoa</label>
+          <select id="department"><option value="">Đang tải danh sách khoa...</option></select>
+        </div>
+        <div>
+          <label>Chuyên ngành</label>
+          <select id="specialty"><option value="">-- Hãy chọn khoa trước --</option></select>
+        </div>
+      </div>
+      <div id="scheduleNotice" class="notice">Chọn khoa và chuyên ngành để xem giờ hoạt động.</div>
+
+      <h3>Chỉ số đo trước khi vào phòng bác sĩ</h3>
+      <div class="grid four">
+        <div><label>Chiều cao (cm)</label><input id="heightCm" type="number" value="170" min="30" max="250" /></div>
+        <div><label>Cân nặng (kg)</label><input id="weightKg" type="number" value="65" min="1" max="400" step="0.1" /></div>
+        <div><label>BMI (tự tính)</label><input id="bmi" readonly /></div>
+        <div><label>Mức ưu tiên (1 cao nhất)</label><select id="priority"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+      </div>
+      <div class="grid four">
+        <div><label>Huyết áp</label><input id="bloodPressure" value="120/80" /></div>
+        <div><label>Mạch (lần/phút)</label><input id="pulse" type="number" value="78" /></div>
+        <div><label>Nhiệt độ (°C)</label><input id="temperature" type="number" step="0.1" value="36.8" /></div>
+        <div><label>Nhịp thở</label><input id="respiratoryRate" type="number" value="18" /></div>
+      </div>
+      <div class="grid four">
+        <div><label>SpO₂ (%)</label><input id="spo2" type="number" step="0.1" value="98" /></div>
+      </div>
+      <button id="checkinBtn" class="primary full">Check-in & tự động phân phòng / bác sĩ</button>
+      <div id="checkinResult" class="notice hidden"></div>
+    </section>
+
+    <section class="card">
+      <h2>Hàng đợi hiện tại</h2>
+      <div class="row">
+        <select id="queueDepartment" style="min-width:240px"><option value="">Đang tải danh sách khoa...</option></select>
+        <select id="queueSpecialty" style="min-width:320px"><option value="">Tất cả chuyên ngành</option></select>
+        <button id="refreshQueueBtn">Làm mới</button>
+      </div>
+      <p class="muted small">CALLED = hệ thống đã gọi tự động. Nhân viên chỉ xác nhận bệnh nhân có vào phòng hay không.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Trạng thái</th><th>Bệnh nhân</th><th>Ưu tiên</th><th>Check-in</th><th>Bác sĩ được phân</th><th>Phòng</th><th>Thao tác</th></tr>
+          </thead>
+          <tbody id="queueBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/js/common.js?v=3.2.0"></script>
+  <script src="/js/queue.js?v=3.2.0"></script>
+</body>
+</html>

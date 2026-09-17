@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hồ sơ đã khám</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>HỒ SƠ ĐÃ KHÁM</h1>
+    <p>Trang 4 · Tra cứu và kiểm tra bệnh án đã hoàn thành</p>
+  </header>
+  <nav class="nav">
+    <a href="/queue.html">1. Hàng đợi & Check-in</a>
+    <a href="/doctors.html">2. Quản lý bác sĩ</a>
+    <a href="/examining.html">3. Bệnh nhân đang khám</a>
+    <a class="active" href="/records.html">4. Hồ sơ đã khám</a>
+  </nav>
+
+  <main class="container">
+    <section class="metrics" id="metrics"></section>
+    <section class="card">
+      <h2>Tra cứu hồ sơ</h2>
+      <div class="row">
+        <input id="recordQuery" style="flex:1; min-width:220px" placeholder="Mã bệnh án / mã bệnh nhân / tên bệnh nhân" />
+        <select id="recordDepartment" style="min-width:240px"></select>
+        <select id="recordSpecialty" style="min-width:300px"></select>
+        <button id="searchRecordsBtn" class="primary">Tìm</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">Danh sách bệnh án</h2>
+        <div class="row"><button id="prevPageBtn">← Trước</button><span id="pageInfo" class="muted"></span><button id="nextPageBtn">Sau →</button></div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>Mã bệnh án</th><th>Bệnh nhân</th><th>Khoa / chuyên ngành</th><th>Bác sĩ</th><th>Phòng</th><th>Hoàn thành</th><th></th></tr></thead>
+          <tbody id="recordBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="recordDetailCard" class="card hidden">
+      <h2 id="recordDetailTitle">Chi tiết bệnh án</h2>
+      <div id="recordDetail"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/js/common.js?v=3.9.0"></script>
+  <script src="/js/records.js?v=3.9.0"></script>
+</body>
+</html>
