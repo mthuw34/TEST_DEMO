@@ -66,9 +66,3 @@ Bao gồm:
 - test lịch hoạt động;
 - test logic tuổi/kinh nghiệm/trình độ bác sĩ.
 
-
-## V3.9 - Bỏ chức năng xuất file bệnh án
-
-- Trang Hồ sơ đã khám chỉ cho phép tra cứu và xem chi tiết bệnh án trên hệ thống.
-- Không còn nút tải PDF hay bất kỳ nút xuất file bệnh án nào trên giao diện.
-- Dữ liệu bệnh án vẫn được lưu trong cơ sở dữ liệu để tra cứu nội bộ.
